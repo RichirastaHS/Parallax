@@ -16,9 +16,15 @@ export class Layer {
         this.image.onload = () => {
             this.width = this.image.width;
             this.height = this.image.height;
-            this.scale = canvas.height / this.height;
+            // Escala basada en ancho y alto del canvas
+            const scaleWidth = canvas.width / this.width;
+            const scaleHeight = canvas.height / this.height;
+            // Usamos la mayor escala para cubrir toda la pantalla
+            this.scale = Math.max(scaleWidth, scaleHeight);
+            // Escalamos dimensiones
             this.scaledWidth = this.width * this.scale;
-            this.scaledHeight = canvas.height;
+            this.scaledHeight = this.height * this.scale;
+            // Posición inicial
             this.x = 0;
             this.y = 0;
             this.x2 = this.scaledWidth;
@@ -30,10 +36,10 @@ export class Layer {
             return;
         this.speed = gameSpeed * this.speedModifier;
         if (this.x <= -this.scaledWidth) {
-            this.x = this.x2 + this.scaledWidth - this.speed;
+            this.x = this.x2 + this.scaledWidth;
         }
         if (this.x2 <= -this.scaledWidth) {
-            this.x2 = this.x + this.scaledWidth - this.speed;
+            this.x2 = this.x + this.scaledWidth;
         }
         this.x -= this.speed;
         this.x2 -= this.speed;
@@ -42,6 +48,6 @@ export class Layer {
         if (!this.loaded)
             return;
         ctx.drawImage(this.image, this.x, this.y, this.scaledWidth, this.scaledHeight);
-        ctx.drawImage(this.image, (this.x2 - 1), this.y, this.scaledWidth, this.scaledHeight);
+        ctx.drawImage(this.image, this.x2, this.y, this.scaledWidth, this.scaledHeight);
     }
 }
