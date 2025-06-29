@@ -3,27 +3,25 @@ import { InputHandler } from "./inputHandler.js";
 import { Sprite } from "./sprite.js";
 import { Layer } from "./layer.js";
 let gameSpeed = 1;
-let currentBgId = Math.floor(Math.random() * 5) + 1; // Genera un ID aleatorio entre 1 y 5
-// Carga inicial de fondos
+let currentBgId = Math.floor(Math.random() * 5) + 1;
 const backgroundLayer1 = new Image();
 const backgroundLayer2 = new Image();
 const backgroundLayer3 = new Image();
 const backgroundLayer4 = new Image();
-cargarFondos(currentBgId); // Función para cargar imágenes
+cargarFondos(currentBgId);
 const input = new InputHandler();
 const sprite = new Sprite(canvas.width, canvas.height);
 const layer1 = new Layer(backgroundLayer1, 1, gameSpeed);
 const layer2 = new Layer(backgroundLayer2, 2, gameSpeed);
 const layer4 = new Layer(backgroundLayer4, 2, gameSpeed);
 const layer3 = new Layer(backgroundLayer3, 3, gameSpeed);
-// Función simplificada para cambiar fondos
 function cargarFondos(id) {
     backgroundLayer1.src = `public/assets/cielo/${id}.png`;
     backgroundLayer2.src = `public/assets/nubes_capa_1/${id}.png`;
     backgroundLayer3.src = `public/assets/nubes_capa_2/${id}.png`;
     backgroundLayer4.src = `public/assets/ambientales/${id}.png`;
 }
-const fondosDisponibles = [1, 2, 3, 4, 5]; // Todos tus IDs
+const fondosDisponibles = [1, 2, 3, 4, 5];
 let currentIndex = 0;
 document.addEventListener('keydown', (e) => {
     if (e.key.toLowerCase() === 'c') {
@@ -45,7 +43,6 @@ function animate() {
     sprite.update(input);
     requestAnimationFrame(animate);
 }
-// Resto del código (resize event, etc.) se mantiene igual
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

@@ -54,6 +54,6 @@ export class Layer {
     if (!this.loaded) return;
 
     ctx.drawImage(this.image, this.x, this.y, this.scaledWidth, this.scaledHeight);
-    ctx.drawImage(this.image, this.x2, this.y, this.scaledWidth, this.scaledHeight);
+    ctx.drawImage(this.image, (this.x2 - 1), this.y, this.scaledWidth, this.scaledHeight);
   }
 }
