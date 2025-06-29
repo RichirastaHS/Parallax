@@ -12,5 +12,9 @@ Inspirado en los videos de [🔬 Frank's Laboratory](https://www.youtube.com/@Fr
 - 🟦 TypeScript
 - 🌐 HTML Canvas
 - 🎨 CSS
-- 
+
 ---
+
+⚒️ Otros de mis trabajos
+
+[🦜 Documentacion de LibreScript](https://richirastahs.github.io/AstroLibresScript/)
